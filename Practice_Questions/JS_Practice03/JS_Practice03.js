@@ -67,9 +67,11 @@ console.log(containsPeriod(s))
 //returns 22nd, if num is 23 then function returns 23rd and so on. If user does not
 //provide a parameter, then it should return without anything.
 
-function putSuffix (num) {
+function putSuffix (num) { 
+    let exceptions = [11, 12, 13]
     if (!num) return num;
     if (isNaN(num)) return;
+    if (exceptions.includes(num % 100)) return num + 'th'; // special cases for 11, 12, 13
     let suffix = '';
     switch (num % 10) {
         case 1: suffix = 'st'; break;
@@ -87,4 +89,6 @@ console.log(`suffix of ${s} is ${putSuffix(s)}`);
 s = 3
 console.log(`suffix of ${s} is ${putSuffix(s)}`);
 s = 4
+console.log(`suffix of ${s} is ${putSuffix(s)}`);
+s = 111
 console.log(`suffix of ${s} is ${putSuffix(s)}`);
